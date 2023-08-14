@@ -3,7 +3,7 @@ import axios from 'axios'
 const PHOTOS_URL = 'http://localhost:3001/photos'
 
 export const getAllPhotos = (page) => {
-  return axios.get(`${PHOTOS_URL}getallphotos?page=${page}`)
+  return axios.get(`${PHOTOS_URL}/getallphotos?page=${page}`)
     .then((res) => { const { data } = res; const { allPhotos } = data; const { docs } = allPhotos; return docs })
 }
 
