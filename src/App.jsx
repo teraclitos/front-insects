@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { getAllPhotos, createPhoto, updatePhoto, deletePhoto } from './services/photos'
+import updateProfile from './services/profile'
+import { login, logout } from './services/user'
 
 function App () {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDE2NmU3MTJkYmU2YTg4MGFhYzBkNCIsInJvbGUiOiJhZG1pbmJpb2xvZ2ljdGhleWxoYXJkIiwiaWF0IjoxNjkxNzY1NTQ5LCJleHAiOjE2OTE4MDg3NDl9.BRmxDilSSCbPYouLfTxXecRh6fKvJlDMypztilOiTeM'
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDE2NmU3MTJkYmU2YTg4MGFhYzBkNCIsInJvbGUiOiJhZG1pbmJpb2xvZ2ljdGhleWxoYXJkIiwiaWF0IjoxNjkyMDI5MDUwLCJleHAiOjE2OTIwNzIyNTB9.Zx-kMLq5pONtx9GupIhlZv7b3OY9xGU7f1U0lR-D1_w'
   const ID = '64d103f9e868411d2a2b9595'
+  const idProfile = '64d162a611a63baf55329ad1'
   const [zoomed, setZoomed] = useState(false)
   const [photos, setPhotos] = useState([])
   const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -41,7 +44,19 @@ function App () {
   const handleDeletePhoto = (e) => {
     deletePhoto(token, ID).then(res => alert('foto eliminada')).catch(error => alert(error))
   }
-
+  const handleUpdateProfile = (e) => {
+    e.preventDefault()
+    const data = new FormData(e.target)
+    updateProfile(data, token, idProfile).then(res => alert('perfil modificado')).catch(error => alert(error))
+  }
+  const handleLogin = (e) => {
+    e.preventDefault()
+    const data = Object.fromEntries(new FormData(e.target))
+    login(data).then(res => alert('usuario logueado')).catch(error => alert(error))
+  }
+  const handleLogout = (e) => {
+    logout(token).then(res => alert('ha cerrado la sesion correctamente')).catch(error => alert(error))
+  }
   useEffect(() => {
     try {
       getAllPhotos(1).then(data => setPhotos(data))
@@ -136,6 +151,45 @@ function App () {
           </div>
 
         </form>
+
+        <form className='form-put' onSubmit={handleUpdateProfile}>
+          <div>
+            <label htmlFor='nombre-cientifico'>nombre de perfil</label>
+            <input id='nombre-cientifico' name='profileName' type='text' />
+          </div>
+          <div>
+            <label htmlFor='descripcionprofile'>descripcion</label>
+            <textarea id='descripcionprofile' name='profileDescription' type='text' />
+          </div>
+          <div>
+            <label htmlFor='fotoperfil'>foto de perfil</label>
+            <input id='fotoperfil' name='image' type='file' />
+          </div>
+          <div>
+            <button>
+              modificar
+            </button>
+          </div>
+
+        </form>
+        <form className='form-put' onSubmit={handleLogin}>
+          <div>
+            <label htmlFor='nombre-usuario'>nombre de usuario</label>
+            <input id='nombre-usuario' name='username' type='text' />
+          </div>
+          <div>
+            <label htmlFor='contraseña'>contraseña</label>
+            <input id='contraseña' name='password' type='password' />
+          </div>
+          <div>
+            <button type='submit'>
+              login
+            </button>
+            <button type='button' onClick={handleLogout}>logout</button>
+          </div>
+
+        </form>
+
       </div>
     </>
   )
