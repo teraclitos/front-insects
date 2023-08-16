@@ -6,6 +6,10 @@ export const getAllPhotos = (page) => {
   return axios.get(`${PHOTOS_URL}/getallphotos?page=${page}`)
     .then((res) => { const { data } = res; const { allPhotos } = data; const { docs } = allPhotos; return docs })
 }
+export const getOnePhoto = (id) => {
+  return axios.get(`${PHOTOS_URL}/getonephoto/${id}`)
+    .then((res) => { const { data } = res; const { getOnePhoto } = data; return getOnePhoto })
+}
 
 export const createPhoto = (data, token) => {
   return axios.post(`${PHOTOS_URL}/create`, data, {

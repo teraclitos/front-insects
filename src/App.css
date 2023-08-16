@@ -39,3 +39,17 @@
   align-items: start;
 
 }
+table {
+  border-collapse: collapse; /* This property ensures that adjacent cell borders collapse into a single border */
+  border: 2px solid #000; /* Border for the entire table */
+}
+
+th, td {
+  border: 1px solid #ddd; /* Borders for table cells */
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
