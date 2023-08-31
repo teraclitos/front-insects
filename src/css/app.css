@@ -1,4 +1,19 @@
-.image-zoom {
+
+
+
+@import url('./header.css');
+@import url('./icons.css');
+@import url('./reset.css');
+
+
+.app-container{
+  background-color: #102c24;
+  min-height: 100vh;
+}
+
+
+
+ /* .image-zoom {
   position: relative;
   cursor: zoom-in;
    width: 600px;
@@ -43,12 +58,12 @@
 
 }
 table {
-  border-collapse: collapse; /* This property ensures that adjacent cell borders collapse into a single border */
-  border: 2px solid #000; /* Border for the entire table */
+  border-collapse: collapse; 
+  border: 2px solid #000; 
 }
 
 th, td {
-  border: 1px solid #ddd; /* Borders for table cells */
+  border: 1px solid #ddd; 
   padding: 8px;
   text-align: center;
 }
@@ -76,4 +91,4 @@ a:hover {
 }
 a:active {
   background: brown;
-}
+}  */

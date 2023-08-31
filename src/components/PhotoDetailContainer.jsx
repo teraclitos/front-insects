@@ -3,7 +3,9 @@ import PhotoDetail from './PhotoDetail'
 
 const PhotoDetailContainer = () => {
   return (
-    <div><PhotoDetail /></div>
+    <div>
+      <PhotoDetail />
+    </div>
   )
 }
 

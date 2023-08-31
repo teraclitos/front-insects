@@ -1,5 +1,5 @@
 // import { useState, useEffect } from 'react'
-import './App.css'
+import './css/app.css'
 
 import PageRoutes from './Routes'
 // import { getAllPhotos, getOnePhoto, createPhoto, updatePhoto, deletePhoto } from './services/photos'
@@ -10,7 +10,7 @@ import PageRoutes from './Routes'
 function App () {
   return (
     <>
-      <div><PageRoutes /></div>
+      <div className='app-container'><PageRoutes /></div>
     </>
   )
 }
@@ -100,9 +100,7 @@ export default App
 //     logout(token).then(res => alert('ha cerrado la sesion correctamente')).catch(error => alert(error.response.data.msg))
 //   }
 
-//   useEffect(() => {
-//     getAllPhotos(page).then(data => setPhotos(data)).catch((error) => { console.log(error.response.data.msg) })
-//   }, [])
+
 //   useEffect(() => {
 //     getOnePhoto(ID).then(data => setOnePhoto(data)).catch((error) => { console.log(error.response.data.msg) })
 //   }, [])

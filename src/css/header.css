@@ -1,0 +1,17 @@
+
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+}
+.header nav {
+    width: 50%;
+}
+.header  ul {
+
+display: flex;
+justify-content: space-around;
+
+}
