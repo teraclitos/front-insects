@@ -7,6 +7,7 @@ import Login from './components/Login'
 import NotFound from './components/NotFound'
 import CreatePhoto from './components/CreatePhoto'
 import AboutMe from './components/AboutMe'
+import PhotoDetailContainer from './components/PhotoDetailContainer'
 
 const PageRoutes = () => {
   return (
@@ -16,6 +17,10 @@ const PageRoutes = () => {
         <Route
           path='/'
           element={<Home />}
+        />
+        <Route
+          path='/photo/:id'
+          element={<PhotoDetailContainer />}
         />
         <Route
           path='/aboutme'

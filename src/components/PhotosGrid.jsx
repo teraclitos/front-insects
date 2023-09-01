@@ -7,7 +7,7 @@ const PhotosGrid = () => {
     <section>
       {
     dataAllPhotos.map((photo) => (
-      <Photo key={photo.id} photo={photo} />
+      <Photo key={photo._id} photo={photo} />
     )
     )
     }

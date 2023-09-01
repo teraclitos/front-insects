@@ -45,7 +45,7 @@
 .img-proof{
   width: 100px;
   margin-bottom: 10px;
-}
+ */
 .form-put{
   display: flex;
   flex-direction: column;
@@ -75,20 +75,4 @@ th {
   color:red
 
 }
-  .form-put.formy:first-child {
-  background: coral;
 
-}
-
-a:link {
-  background: red;
-}
-a:visited {
-  background: blue;
-}
-a:hover {
-  background: yellow;
-}
-a:active {
-  background: brown;
-}  */

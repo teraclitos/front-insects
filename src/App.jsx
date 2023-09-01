@@ -41,40 +41,6 @@ export default App
 //     setPosition({ x, y })
 //   }
 
-//   const handleCreatePhoto = (e) => {
-//     e.preventDefault()
-//     setPointerEventsButtons('none')
-//     const data = new FormData(e.target)
-//     const files = data.getAll('images')
-
-//     if (files.length < 2) {
-//       alert('debe mandar al menos dos imagenes')
-//       return
-//     }
-
-//     if (sizesPriceArray.length < 1) {
-//       alert('debe mandar los datos del tamaño y precio')
-//       return
-//     }
-
-//     data.append('pricesSizes', JSON.stringify(sizesPriceArray))
-
-//     if (checkIfThereIsAnyError()) {
-//       const newFirstInputCheck = firstInputCheck.map((field, i) => {
-//         const keyField = Object.keys(field)[0]
-//         const newField = { }
-//         newField[keyField] = true
-//         return newField
-//       })
-//       setFirstInputCheck(newFirstInputCheck)
-//       alert('Debe completar correctamente todos los campos obligatorios')
-//       return
-//     }
-
-//     createPhoto(data, token).then(res => alert('foto creada')).catch(error => alert(error.response.data.msg)).finally(() => {
-//       setPointerEventsButtons('all')
-//     })
-//   }
 //   const handleUpdatePhoto = (e) => {
 //     e.preventDefault()
 //     const data = new FormData(e.target)
@@ -101,9 +67,6 @@ export default App
 //   }
 
 
-//   useEffect(() => {
-//     getOnePhoto(ID).then(data => setOnePhoto(data)).catch((error) => { console.log(error.response.data.msg) })
-//   }, [])
 
 //   useEffect(() => {
 //     getProfile().then(data => setProfile(data)).catch((error) => { console.log(error.response.data.msg) })
@@ -117,14 +80,7 @@ export default App
 
 //     ]
 //   )
-//   const handleChangeFieldCreate = (event) => {
-//     const fieldName = event.target.name
-//     const copyFields = structuredClone(photoFieldsCreate)
-//     const fieldToChange = copyFields.findIndex(field => field?.[fieldName] !== undefined)
-//     copyFields[fieldToChange][fieldName] = event.target.value
-//     validatePhotosFieldsWithoutSizesPrice(copyFields[fieldToChange], fieldName)
-//     setPhotoFieldsCreate(copyFields)
-//   }
+//
 //   const [sizesPrice, setSizesPrice] = useState({ size: { width: '', height: '' }, price: '' })
 //   const [sizesPriceArray, setSizesPriceArray] = useState([])
 //   const handleSizesPrices = (event) => {
