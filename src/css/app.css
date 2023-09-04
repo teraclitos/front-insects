@@ -4,10 +4,11 @@
 @import url('./header.css');
 @import url('./icons.css');
 @import url('./reset.css');
+@import url('./spiner.css');
 
 
 .app-container{
-  background-color: #102c24;
+  background-color: #4f624e;
   min-height: 100vh;
 }
 

@@ -16,5 +16,5 @@ export const useDataOnePhoto = () => {
     }
   }, [])
 
-  return { dataOnePhoto, setDataOnePhoto }
+  return { dataOnePhoto, id }
 }

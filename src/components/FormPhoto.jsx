@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {
-  sizesPricesFunction,
-  sizesPricesArrayFunction,
   activateErrorFunction,
   checkIfThereIsAnyErrorFunction,
-  changeFieldFunction,
-  sizesPricesArrayDeleteOneFunction
+  changeFieldFunction
+
 } from '../services/photosCreateModify'
-import { createPhoto } from '../services/photos'
+import TableSizesPrices from './TableSizesPrices'
+import { createPhoto, updatePhoto, deletePhoto } from '../services/photos'
+import WidthHeightInputs from './WidthHeightInputs'
+import { LoginContext } from '../context/login'
 
 const FormPhoto = ({
   photoFields,
@@ -18,23 +19,16 @@ const FormPhoto = ({
   setSizesPrices,
   setSizesPricesArray,
   setFirstInputCheck,
-  operation
+  operation,
+  id
 }) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDE2NmU3MTJkYmU2YTg4MGFhYzBkNCIsInJvbGUiOiJhZG1pbmJpb2xvZ2ljdGhleWxoYXJkIiwiaWF0IjoxNjkzNTcyNTUyLCJleHAiOjE2OTM2MTU3NTJ9.LAVLzpQeQLpncPDincTvByrtdffQicEkRfK2MrIJgus'
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDE2NmU3MTJkYmU2YTg4MGFhYzBkNCIsInJvbGUiOiJhZG1pbmJpb2xvZ2ljdGhleWxoYXJkIiwiaWF0IjoxNjkzODMyODUxLCJleHAiOjE2OTM4NzYwNTF9.1x-A0rv6IFQayq3Org2hA0WarcoNt0LqsX-Z7BvumIs'
+  const { login, setLogin } = useContext(LoginContext)
 
-  const handleSizesPrices = (event) => {
-    setSizesPrices(sizesPricesFunction(event, sizesPrices))
-  }
-  const handleSizesPriceArray = () => {
-    setSizesPricesArray(sizesPricesArrayFunction(sizesPricesArray, sizesPrices))
-    setSizesPrices({ size: { width: '', height: '' }, price: '' })
-  }
   const handleActivateError = (event) => {
     setFirstInputCheck(activateErrorFunction(event, firstInputCheck))
   }
-  const handlesSizesPriceArrayDeleteOne = (i) => {
-    setSizesPricesArray(sizesPricesArrayDeleteOneFunction(i, sizesPricesArray))
-  }
+
   const handleChangeFieldCreate = (event) => {
     setPhotoFields(changeFieldFunction(event, photoFields))
   }
@@ -70,14 +64,21 @@ const FormPhoto = ({
     if (operation === 'create') {
       createPhoto(data, token).then(res => console.log('foto creada')).catch(error => console.log(error.response.data.msg)).finally(() => {
       })
+    } else {
+      updatePhoto(data, token, id).then(res => console.log('foto modificada')).catch(error => console.log(error.response.data.msg))
     }
   }
-  const handleSizesPriceArrayClean = () => {
-    setSizesPricesArray([])
+  const handleDeletePhoto = () => {
+    deletePhoto(token, id).then(res => console.log('foto eliminada')).catch(error => console.log(error.response.data.msg))
   }
   useEffect(() => {
-    console.log(photoFields)
-  }, [photoFields])
+    if (operation === 'create') {
+      if (login) {
+        alert('succesful login')
+        setLogin(false)
+      }
+    }
+  }, [])
   return (
     <form className='form-put' onSubmit={handlePhoto}>
       <div>
@@ -99,64 +100,23 @@ const FormPhoto = ({
         <textarea value={photoFields[2].description} onBlur={handleActivateError} onChange={handleChangeFieldCreate} id='descripcion' name='description' type='text' />
         {firstInputCheck[2].description && <div className='error'>{photoFields[2].error}</div>}
       </div>
-      <div>
-        <div>
-          <label htmlFor='widthinput'>width</label>
-          <input name='width' value={sizesPrices.size.width} onChange={handleSizesPrices} id='widthinput' type='number' />
-        </div>
-        <div>
-          <label htmlFor='heightinput'>height</label>
-          <input name='height' value={sizesPrices.size.height} onChange={handleSizesPrices} id='heightinput' type='number' />
-        </div>
-        <div>
-          <label htmlFor='priceinput'>prize</label>
-          <input name='price' value={sizesPrices.price} onChange={handleSizesPrices} id='priceinput' type='number' />
-        </div>
-        <button onClick={handleSizesPriceArray} type='button'>añadir </button>
-        <button onClick={handleSizesPriceArrayClean} type='button'>limpiar</button>
-      </div>
+      <WidthHeightInputs
+        sizesPrices={sizesPrices}
+        setSizesPrices={setSizesPrices}
+        sizesPricesArray={sizesPricesArray}
+        setSizesPricesArray={setSizesPricesArray}
+      />
+
       {sizesPricesArray.length > 0 &&
-        <table>
-          <thead>
-            <tr>
-              <th />
-              <th colSpan={2}>size</th>
-              <th colSpan={2} />
-            </tr>
-            <tr>
-              <th>id</th>
-              <th>width</th>
-              <th>height</th>
-              <th>price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              sizesPricesArray.map((field, index) => (
-                <tr key={`row${index}`}>
-                  <td>
-                    {index + 1}
-                  </td>
-                  <td>
-                    {field?.size?.width}
-                  </td>
-                  <td>
-                    {field?.size?.height}
-                  </td>
-                  <td>
-                    {field?.price}
-                  </td>
-                  <td>
-                    <button type='button' onClick={() => { handlesSizesPriceArrayDeleteOne(index) }}>eliminar</button>
-                  </td>
-                </tr>))
-}
-          </tbody>
-        </table>}
+        <TableSizesPrices
+          sizesPricesArray={sizesPricesArray}
+          setSizesPricesArray={setSizesPricesArray}
+        />}
       <div>
         <button>
-          crear
+          {operation === 'create' ? 'create' : 'update'}
         </button>
+        {operation !== 'create' && <button onClick={handleDeletePhoto} type='button'>delete</button>}
       </div>
 
     </form>

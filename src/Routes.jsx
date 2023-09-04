@@ -8,37 +8,34 @@ import NotFound from './components/NotFound'
 import CreatePhoto from './components/CreatePhoto'
 import AboutMe from './components/AboutMe'
 import PhotoDetailContainer from './components/PhotoDetailContainer'
+import { LoginProvider } from './context/login'
 
 const PageRoutes = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route
-          path='/'
-          element={<Home />}
-        />
-        <Route
-          path='/photo/:id'
-          element={<PhotoDetailContainer />}
-        />
-        <Route
-          path='/aboutme'
-          element={<AboutMe />}
-        />
-        <Route
-          path='/admin'
-          element={<Login />}
-        />
-        <Route
-          path='/admin/createphoto'
-          element={<CreatePhoto />}
-        />
-        <Route
-          path='*'
-          element={<NotFound />}
-        />
-      </Routes>
+      <LoginProvider>
+        <Routes>
+          <Route
+            path='/'
+            element={<Home />}
+          />
+          <Route
+            path='/photo/:id'
+            element={<PhotoDetailContainer />}
+          />
+          <Route
+            path='/aboutme'
+            element={<AboutMe />}
+          />
+          <Route path='/admin' element={<Login />} />
+          <Route path='/admin/createphoto' element={<CreatePhoto />} />
+          <Route
+            path='*'
+            element={<NotFound />}
+          />
+        </Routes>
+      </LoginProvider>
       <Footer />
     </BrowserRouter>
   )

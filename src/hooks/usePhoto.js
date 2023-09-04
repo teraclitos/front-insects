@@ -1,11 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDataOnePhoto } from './useDataOnePhoto'
 
 export const usePhoto = (operation) => {
   const isOperationCreate = operation === 'create'
 
-  const { dataOnePhoto } = useDataOnePhoto()
-
+  const { dataOnePhoto, id } = useDataOnePhoto()
   const {
     scientificName,
     artistName,
@@ -15,24 +14,28 @@ export const usePhoto = (operation) => {
 
   const [photoFields, setPhotoFields] = useState(
 
-    isOperationCreate
+    [
+      { scientificName: '', error: 'El campo scientificName está vacío' },
+      { artistName: '', error: 'El campo artisName está vacío' },
+      { description: '', error: 'El campo description está vacío' }
 
-      ? [
-          { scientificName: '', error: 'El campo scientificName está vacío' },
-          { artistName: '', error: 'El campo artisName está vacío' },
-          { description: '', error: 'El campo description está vacío' }
+    ]
 
-        ]
-      : [
-          { scientificName, error: '' },
-          { artistName, error: '' },
-          { description, error: '' }
-
-        ]
   )
   const [sizesPrices, setSizesPrices] = useState({ size: { width: '', height: '' }, price: '' })
-  const [sizesPricesArray, setSizesPricesArray] = useState(isOperationCreate ? [] : sizesPricesArrayInitialState
-  )
+  const [sizesPricesArray, setSizesPricesArray] = useState([])
+
+  useEffect(() => {
+    if (!isOperationCreate) {
+      setPhotoFields([
+        { scientificName, error: '' },
+        { artistName, error: '' },
+        { description, error: '' }
+
+      ])
+      setSizesPricesArray(sizesPricesArrayInitialState)
+    }
+  }, [dataOnePhoto])
   const [firstInputCheck, setFirstInputCheck] = useState(
     [
       { scientificName: false },
@@ -51,6 +54,7 @@ export const usePhoto = (operation) => {
     setPhotoFields,
     setSizesPrices,
     setSizesPricesArray,
-    setFirstInputCheck
+    setFirstInputCheck,
+    id
   }
 }

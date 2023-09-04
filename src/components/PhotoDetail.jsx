@@ -3,6 +3,7 @@ import FormPhoto from './FormPhoto'
 import { usePhoto } from '../hooks/usePhoto'
 const PhotoDetail = () => {
   const operation = 'update'
+
   const {
     photoFields,
     sizesPrices,
@@ -11,8 +12,10 @@ const PhotoDetail = () => {
     setPhotoFields,
     setSizesPrices,
     setSizesPricesArray,
-    setFirstInputCheck
+    setFirstInputCheck,
+    id
   } = usePhoto(operation)
+
   return (
     <div><FormPhoto
       photoFields={photoFields}
@@ -24,6 +27,7 @@ const PhotoDetail = () => {
       setSizesPricesArray={setSizesPricesArray}
       setFirstInputCheck={setFirstInputCheck}
       operation={operation}
+      id={id}
          />
     </div>
   )
