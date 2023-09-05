@@ -1,4 +1,5 @@
 // import { useState, useEffect } from 'react'
+import { TokenProvider } from './context/token'
 import './css/app.css'
 
 import PageRoutes from './Routes'
@@ -9,9 +10,10 @@ import PageRoutes from './Routes'
 
 function App () {
   return (
-    <>
+    <TokenProvider>
       <div className='app-container'><PageRoutes /></div>
-    </>
+    </TokenProvider>
+
   )
 }
 
@@ -33,17 +35,6 @@ export default App
 
 //     setPosition({ x, y })
 //   }
-
-//   const handleUpdateProfile = (e) => {
-//     e.preventDefault()
-//     const data = new FormData(e.target)
-//     updateProfile(data, token, idProfile).then(res => alert('perfil modificado')).catch(error => alert(error.response.data.msg))
-//   }
-
-
-//   useEffect(() => {
-//     getProfile().then(data => setProfile(data)).catch((error) => { console.log(error.response.data.msg) })
-//   }, [])
 
 //   const [profileFields, setprofileFields] = useState(
 //     [
@@ -89,26 +80,5 @@ export default App
 //         </div>
 
 //         <div>{position.x}</div><div>{position.y}</div>
-
-//         <form className='form-put' onSubmit={handleUpdateProfile}>
-//           <div>
-//             <label htmlFor='nombre-perfil'>nombre de perfil</label>
-//             <input onChange={handleProfileFields} value={profileFields[0].profileName} id='nombre-perfil' name='profileName' type='text' />
-//           </div>
-//           <div>
-//             <label htmlFor='descripcionprofile'>descripcion</label>
-//             <textarea onChange={handleProfileFields} value={profileFields[1].profileDescription} id='descripcionprofile' name='profileDescription' type='text' />
-//           </div>
-//           <div>
-//             <label htmlFor='fotoperfil'>foto de perfil</label>
-//             <input id='fotoperfil' name='image' type='file' />
-//           </div>
-//           <div>
-//             <button>
-//               modificar
-//             </button>
-//           </div>
-
-//         </form>
 
 //       </div>

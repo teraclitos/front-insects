@@ -9,6 +9,7 @@ import TableSizesPrices from './TableSizesPrices'
 import { createPhoto, updatePhoto, deletePhoto } from '../services/photos'
 import WidthHeightInputs from './WidthHeightInputs'
 import { LoginContext } from '../context/login'
+import { TokenContext } from '../context/token'
 
 const FormPhoto = ({
   photoFields,
@@ -22,7 +23,7 @@ const FormPhoto = ({
   operation,
   id
 }) => {
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDE2NmU3MTJkYmU2YTg4MGFhYzBkNCIsInJvbGUiOiJhZG1pbmJpb2xvZ2ljdGhleWxoYXJkIiwiaWF0IjoxNjkzODMyODUxLCJleHAiOjE2OTM4NzYwNTF9.1x-A0rv6IFQayq3Org2hA0WarcoNt0LqsX-Z7BvumIs'
+  const { token } = useContext(TokenContext)
   const { login, setLogin } = useContext(LoginContext)
 
   const handleActivateError = (event) => {
@@ -93,7 +94,7 @@ const FormPhoto = ({
       </div>
       <div>
         <label htmlFor='fotos'>fotos</label>
-        <input id='fotos' name='images' type='file' multiple />
+        <input accept='.jpg,.jpeg,.png' id='fotos' name='images' type='file' multiple />
       </div>
       <div>
         <label htmlFor='descripcion'>descripcion</label>

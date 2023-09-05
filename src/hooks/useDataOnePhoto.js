@@ -7,8 +7,10 @@ export const useDataOnePhoto = () => {
     scientificName: '',
     artistName: '',
     description: '',
-    pricesSizes: []
+    pricesSizes: [],
+    photos_URL: []
   })
+
   const { id } = useParams() || false
   useEffect(() => {
     if (id) {

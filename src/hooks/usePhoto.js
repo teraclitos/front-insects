@@ -55,6 +55,8 @@ export const usePhoto = (operation) => {
     setSizesPrices,
     setSizesPricesArray,
     setFirstInputCheck,
-    id
+    id,
+    dataOnePhoto
+
   }
 }

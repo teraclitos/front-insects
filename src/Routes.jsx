@@ -14,6 +14,7 @@ const PageRoutes = () => {
   return (
     <BrowserRouter>
       <Header />
+
       <LoginProvider>
         <Routes>
           <Route
@@ -36,6 +37,7 @@ const PageRoutes = () => {
           />
         </Routes>
       </LoginProvider>
+
       <Footer />
     </BrowserRouter>
   )
