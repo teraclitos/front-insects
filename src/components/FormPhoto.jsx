@@ -5,7 +5,7 @@ import {
   changeFieldFunction
 
 } from '../services/photosCreateModify'
-import TableSizesPrices from './TableSizesPrices'
+import TableItems from './TableItems'
 import { createPhoto, updatePhoto, deletePhoto } from '../services/photos'
 import WidthHeightInputs from './WidthHeightInputs'
 import { LoginContext } from '../context/login'
@@ -13,12 +13,12 @@ import { TokenContext } from '../context/token'
 
 const FormPhoto = ({
   photoFields,
-  sizesPrices,
-  sizesPricesArray,
+  items,
+  itemsArray,
   firstInputCheck,
   setPhotoFields,
-  setSizesPrices,
-  setSizesPricesArray,
+  setItems,
+  setItemsArray,
   setFirstInputCheck,
   operation,
   id
@@ -43,12 +43,12 @@ const FormPhoto = ({
       return
     }
 
-    if (sizesPricesArray.length < 1) {
+    if (itemsArray.length < 1) {
       console.log('debe mandar los datos del tamaño y precio')
       return
     }
 
-    data.append('pricesSizes', JSON.stringify(sizesPricesArray))
+    data.append('items', JSON.stringify(itemsArray))
 
     if (checkIfThereIsAnyErrorFunction(photoFields)) {
       const newFirstInputCheck = firstInputCheck.map((field, i) => {
@@ -63,7 +63,7 @@ const FormPhoto = ({
     }
 
     if (operation === 'create') {
-      createPhoto(data, token).then(res => console.log('foto creada')).catch(error => console.log(error.response.data.msg)).finally(() => {
+      createPhoto(data, token).then(res => alert('foto creada')).catch(error => console.log(error.response.data.msg)).finally(() => {
       })
     } else {
       updatePhoto(data, token, id).then(res => console.log('foto modificada')).catch(error => console.log(error.response.data.msg))
@@ -102,16 +102,16 @@ const FormPhoto = ({
         {firstInputCheck[2].description && <div className='error'>{photoFields[2].error}</div>}
       </div>
       <WidthHeightInputs
-        sizesPrices={sizesPrices}
-        setSizesPrices={setSizesPrices}
-        sizesPricesArray={sizesPricesArray}
-        setSizesPricesArray={setSizesPricesArray}
+        items={items}
+        setItems={setItems}
+        itemsArray={itemsArray}
+        setItemsArray={setItemsArray}
       />
 
-      {sizesPricesArray.length > 0 &&
-        <TableSizesPrices
-          sizesPricesArray={sizesPricesArray}
-          setSizesPricesArray={setSizesPricesArray}
+      {itemsArray.length > 0 &&
+        <TableItems
+          itemsArray={itemsArray}
+          setItemsArray={setItemsArray}
         />}
       <div>
         <button>

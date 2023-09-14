@@ -1,33 +1,33 @@
-import validatePhotosFieldsWithoutSizesPrices from './validationPhotos'
+import validatePhotosFieldsWithoutItems from './validationPhotos'
 
 export const changeFieldFunction = (event, photoFields) => {
   const fieldName = event.target.name
   const copyFields = structuredClone(photoFields)
   const fieldToChange = copyFields.findIndex(field => field?.[fieldName] !== undefined)
   copyFields[fieldToChange][fieldName] = event.target.value
-  validatePhotosFieldsWithoutSizesPrices(copyFields[fieldToChange], fieldName)
+  validatePhotosFieldsWithoutItems(copyFields[fieldToChange], fieldName)
   return copyFields
 }
-export const sizesPricesFunction = (event, sizesPrices) => {
+export const itemsFunction = (event, items) => {
   const fieldName = event.target.name
-  const newSizesPrices = { ...sizesPrices }
+  const newItems = { ...items }
   if (fieldName === 'price') {
-    newSizesPrices[fieldName] = Number(event.target.value)
+    newItems[fieldName] = Number(event.target.value)
   } else {
-    newSizesPrices.size[fieldName] = Number(event.target.value)
+    newItems.size[fieldName] = Number(event.target.value)
   }
-  return newSizesPrices
+  return newItems
 }
-export const sizesPricesArrayFunction = (sizesPricesArray, sizesPrices) => {
-  const newSizesPricesArray = structuredClone(sizesPricesArray)
-  const newSizesPrices = { ...sizesPrices }
-  newSizesPricesArray.push(newSizesPrices)
-  return newSizesPricesArray
+export const itemsArrayFunction = (itemsArray, items) => {
+  const newItemsArray = structuredClone(itemsArray)
+  const newItems = { ...items }
+  newItemsArray.push(newItems)
+  return newItemsArray
 }
 
-export const sizesPricesArrayDeleteOneFunction = (indexToDelete, sizesPricesArray) => {
-  const newSizesPricesArray = sizesPricesArray.filter((el, id) => id !== indexToDelete)
-  return newSizesPricesArray
+export const itemsArrayDeleteOneFunction = (indexToDelete, itemsArray) => {
+  const newItemsArray = itemsArray.filter((el, id) => id !== indexToDelete)
+  return newItemsArray
 }
 export const activateErrorFunction = (event, firstInputCheck) => {
   const fieldName = event.target.name

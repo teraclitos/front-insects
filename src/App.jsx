@@ -1,18 +1,22 @@
-// import { useState, useEffect } from 'react'
 import { TokenProvider } from './context/token'
 import './css/app.css'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 import PageRoutes from './Routes'
-// import { getAllPhotos, getOnePhoto, createPhoto, updatePhoto, deletePhoto } from './services/photos'
-// import { updateProfile, getProfile } from './services/profile'
-// import { login, logout } from './services/user'
-// import validatePhotosFieldsWithoutSizesPrice from './services/validationPhotos'
 
 function App () {
+  const initialOptions = {
+    clientId: 'AYrSVhpxp0Oq3oSfvPftmp87iaXQ21Biz-M3uUnRqWqKZcmS49Xdu3V07FBHC2hsZX4K-mERciLbfGQk',
+    currency: 'USD',
+    intent: 'capture',
+    locale: 'fr_FR'
+  }
   return (
-    <TokenProvider>
-      <div className='app-container'><PageRoutes /></div>
-    </TokenProvider>
+    <PayPalScriptProvider initialOptions={initialOptions}>
+      <TokenProvider>
+        <div className='app-container'><PageRoutes /></div>
+      </TokenProvider>
+    </PayPalScriptProvider>
 
   )
 }

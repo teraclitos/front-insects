@@ -9,36 +9,45 @@ import CreatePhoto from './components/CreatePhoto'
 import AboutMe from './components/AboutMe'
 import PhotoDetailContainer from './components/PhotoDetailContainer'
 import { LoginProvider } from './context/login'
+import './css/app.css'
+import { CartProvider } from './context/cart'
+import CheckOut from './components/CheckOut'
 
 const PageRoutes = () => {
   return (
     <BrowserRouter>
-      <Header />
+    
+      <CartProvider>
+        <Header />
 
-      <LoginProvider>
-        <Routes>
-          <Route
-            path='/'
-            element={<Home />}
-          />
-          <Route
-            path='/photo/:id'
-            element={<PhotoDetailContainer />}
-          />
-          <Route
-            path='/aboutme'
-            element={<AboutMe />}
-          />
-          <Route path='/admin' element={<Login />} />
-          <Route path='/admin/createphoto' element={<CreatePhoto />} />
-          <Route
-            path='*'
-            element={<NotFound />}
-          />
-        </Routes>
-      </LoginProvider>
+        <LoginProvider>
+          <main className='main-page-container'>
+            <Routes>
+              <Route
+                path='/'
+                element={<Home />}
+              />
+              <Route
+                path='/photo/:id'
+                element={<PhotoDetailContainer />}
+              />
+              <Route
+                path='/aboutme'
+                element={<AboutMe />}
+              />
+              <Route path='/admin' element={<Login />} />
+              <Route path='/admin/createphoto' element={<CreatePhoto />} />
+              <Route path='/checkout' element={<CheckOut />} />
+              <Route
+                path='*'
+                element={<NotFound />}
+              />
+            </Routes>
+          </main>
+        </LoginProvider>
 
-      <Footer />
+        <Footer />
+      </CartProvider>
     </BrowserRouter>
   )
 }

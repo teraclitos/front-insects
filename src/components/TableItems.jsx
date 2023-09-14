@@ -1,9 +1,9 @@
 import React from 'react'
-import { sizesPricesArrayDeleteOneFunction } from '../services/photosCreateModify'
+import { itemsArrayDeleteOneFunction } from '../services/photosCreateModify'
 
-const TableSizesPrices = ({ sizesPricesArray, setSizesPricesArray }) => {
-  const handlesSizesPriceArrayDeleteOne = (i) => {
-    setSizesPricesArray(sizesPricesArrayDeleteOneFunction(i, sizesPricesArray))
+const TableItems = ({ itemsArray, setItemsArray }) => {
+  const handlesItemsArrayDeleteOne = (i) => {
+    setItemsArray(itemsArrayDeleteOneFunction(i, itemsArray))
   }
   return (
     <table>
@@ -22,7 +22,7 @@ const TableSizesPrices = ({ sizesPricesArray, setSizesPricesArray }) => {
       </thead>
       <tbody>
         {
-              sizesPricesArray.map((field, index) => (
+              itemsArray.map((field, index) => (
                 <tr key={`row${index}`}>
                   <td>
                     {index + 1}
@@ -37,7 +37,7 @@ const TableSizesPrices = ({ sizesPricesArray, setSizesPricesArray }) => {
                     {field?.price}
                   </td>
                   <td>
-                    <button type='button' onClick={() => { handlesSizesPriceArrayDeleteOne(index) }}>eliminar</button>
+                    <button type='button' onClick={() => { handlesItemsArrayDeleteOne(index) }}>eliminar</button>
                   </td>
                 </tr>))
 }
@@ -46,4 +46,4 @@ const TableSizesPrices = ({ sizesPricesArray, setSizesPricesArray }) => {
   )
 }
 
-export default TableSizesPrices
+export default TableItems

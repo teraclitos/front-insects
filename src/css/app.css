@@ -7,59 +7,29 @@
 @import url('./spiner.css');
 @import url('./card.css');
 @import url('./gridcard.css');
+@import url('./mediaqueries.css');
+@import url('./footer.css');
+@import url('./cart.css');
+@import url('./photodetailuser.css');
+
+
 
 
 .app-container{
   background-color: #4f624e;
   min-height: 100vh;
-}
-
-
-
- /* .image-zoom {
-  position: relative;
-  cursor: zoom-in;
-   width: 600px;
-}
-
-.image-zoom img {
-  max-width: 100%;
-  height: auto;
- 
-} 
-.zoom-preview {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-}
-
-
-.container{
-  width: 100%;
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  flex-direction: column;
-  gap: 20px;
-}
-.img-proof{
-  width: 100px;
-  margin-bottom: 10px;
- */
-.form-put{
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  justify-content: center;
-  align-items: start;
-  border: solid #000 1px;
-  margin: 10px 0;
-  padding: 2em;
+  justify-content: space-between;
+  color: #fff;
 
+ 
 }
+.main-page-container{
+  margin-top: 2em;
+}
+
 table {
   border-collapse: collapse; 
   border: 2px solid #000; 

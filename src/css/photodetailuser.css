@@ -1,0 +1,64 @@
+
+.photo-detail-user-container{
+    display: flex;
+    justify-content: space-around;
+    gap: 5em;
+}
+ .photo-detail-user-information{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+}
+.input-sizes-container{
+     display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+
+}
+
+.image-zoom {
+  position: relative;
+  cursor: zoom-in;
+   width: 600px;
+
+}
+
+.image-zoom img {
+  max-width: 100%;
+  height: auto;
+ 
+} 
+.zoom-preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.container{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.img-proof{
+  width: 100px;
+  margin-bottom: 10px;}
+
+.form-put{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: start;
+  border: solid #000 1px;
+  margin: 10px 0;
+  padding: 2em;
+
+}

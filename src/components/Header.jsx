@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import '../css/app.css'
 import Logo from './Logo'
 import { Link, useNavigate } from 'react-router-dom'
-import { CartIcon } from './Icons'
+import { Cart } from './Cart'
 import { TokenContext } from '../context/token'
 import { logout } from '../services/user'
 
@@ -30,7 +30,8 @@ const Header = () => {
         <ul>
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/aboutme'>About me </Link></li>
-          <li><CartIcon /></li>
+          {token && <li><Link to='/admin/createphoto'>Create photo </Link></li>}
+          {!token && <li><Cart /></li>}
           {token && <li><button type='button' onClick={handleLogout}>logout</button></li>}
         </ul>
       </nav>

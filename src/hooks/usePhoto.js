@@ -9,7 +9,7 @@ export const usePhoto = (operation) => {
     scientificName,
     artistName,
     description,
-    pricesSizes: sizesPricesArrayInitialState
+    items: itemsArrayInitialState
   } = dataOnePhoto
 
   const [photoFields, setPhotoFields] = useState(
@@ -22,8 +22,8 @@ export const usePhoto = (operation) => {
     ]
 
   )
-  const [sizesPrices, setSizesPrices] = useState({ size: { width: '', height: '' }, price: '' })
-  const [sizesPricesArray, setSizesPricesArray] = useState([])
+  const [items, setItems] = useState({ size: { width: '', height: '' }, price: '' })
+  const [itemsArray, setItemsArray] = useState([])
 
   useEffect(() => {
     if (!isOperationCreate) {
@@ -33,7 +33,7 @@ export const usePhoto = (operation) => {
         { description, error: '' }
 
       ])
-      setSizesPricesArray(sizesPricesArrayInitialState)
+      setItemsArray(itemsArrayInitialState)
     }
   }, [dataOnePhoto])
   const [firstInputCheck, setFirstInputCheck] = useState(
@@ -48,12 +48,12 @@ export const usePhoto = (operation) => {
   )
   return {
     photoFields,
-    sizesPrices,
-    sizesPricesArray,
+    items,
+    itemsArray,
     firstInputCheck,
     setPhotoFields,
-    setSizesPrices,
-    setSizesPricesArray,
+    setItems,
+    setItemsArray,
     setFirstInputCheck,
     id,
     dataOnePhoto

@@ -7,7 +7,7 @@ export const useDataOnePhoto = () => {
     scientificName: '',
     artistName: '',
     description: '',
-    pricesSizes: [],
+    items: [],
     photos_URL: []
   })
 

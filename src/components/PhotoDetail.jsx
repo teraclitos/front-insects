@@ -9,12 +9,12 @@ const PhotoDetail = () => {
 
   const {
     photoFields,
-    sizesPrices,
-    sizesPricesArray,
+    items,
+    itemsArray,
     firstInputCheck,
     setPhotoFields,
-    setSizesPrices,
-    setSizesPricesArray,
+    setItems,
+    setItemsArray,
     setFirstInputCheck,
     id,
     dataOnePhoto
@@ -27,12 +27,12 @@ const PhotoDetail = () => {
       {token
         ? <FormPhoto
             photoFields={photoFields}
-            sizesPrices={sizesPrices}
-            sizesPricesArray={sizesPricesArray}
+            items={items}
+            itemsArray={itemsArray}
             firstInputCheck={firstInputCheck}
             setPhotoFields={setPhotoFields}
-            setSizesPrices={setSizesPrices}
-            setSizesPricesArray={setSizesPricesArray}
+            setItems={setItems}
+            setItemsArray={setItemsArray}
             setFirstInputCheck={setFirstInputCheck}
             operation={operation}
             id={id}
