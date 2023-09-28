@@ -1,7 +1,7 @@
 .icons{
-    color: #fff;
+    color: #000000;
     cursor: pointer;
 }
-.icons:hover{
-    color: yellowgreen;
-}
+/* .icons:hover{
+    color: rgb(37, 46, 18);
+} */

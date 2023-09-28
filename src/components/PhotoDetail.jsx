@@ -3,6 +3,9 @@ import FormPhoto from './FormPhoto'
 import { usePhoto } from '../hooks/usePhoto'
 import { TokenContext } from '../context/token'
 import PhotoDetailUser from './PhotoDetailUser'
+import Loader from './Loader'
+import { LoaderContext } from '../context/loader'
+import '../css/app.css'
 
 const PhotoDetail = () => {
   const operation = 'update'
@@ -22,24 +25,29 @@ const PhotoDetail = () => {
 
   const { token } = useContext(TokenContext)
 
-  return (
-    <div>
-      {token
-        ? <FormPhoto
-            photoFields={photoFields}
-            items={items}
-            itemsArray={itemsArray}
-            firstInputCheck={firstInputCheck}
-            setPhotoFields={setPhotoFields}
-            setItems={setItems}
-            setItemsArray={setItemsArray}
-            setFirstInputCheck={setFirstInputCheck}
-            operation={operation}
-            id={id}
+  const { loader } = useContext(LoaderContext)
 
-          />
-        : <PhotoDetailUser dataOnePhoto={dataOnePhoto} />}
-    </div>
+  return (
+    <>
+      {!loader
+        ? <div className='photo-detail mt-5'>
+          {token
+            ? <FormPhoto
+                photoFields={photoFields}
+                items={items}
+                itemsArray={itemsArray}
+                firstInputCheck={firstInputCheck}
+                setPhotoFields={setPhotoFields}
+                setItems={setItems}
+                setItemsArray={setItemsArray}
+                setFirstInputCheck={setFirstInputCheck}
+                operation={operation}
+                id={id}
+              />
+            : <PhotoDetailUser dataOnePhoto={dataOnePhoto} />}
+          </div>
+        : <Loader />}
+    </>
   )
 }
 

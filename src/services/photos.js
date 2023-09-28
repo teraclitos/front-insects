@@ -1,34 +1,32 @@
 import axios from 'axios'
 
-const PHOTOS_URL = 'http://localhost:3001/photos'
-
-export const getAllPhotos = (page) => {
-  return axios.get(`${PHOTOS_URL}/getallphotos?page=${page}`)
-    .then((res) => { const { data } = res; const { allPhotos } = data; const { docs } = allPhotos; return docs })
+export const getAllPhotos = (page, URL) => {
+  return axios.get(`${URL}/photos/getallphotos?page=${page}`)
+    .then((res) => { const { data } = res; const { allPhotos } = data; return allPhotos })
 }
-export const getOnePhoto = (id) => {
-  return axios.get(`${PHOTOS_URL}/getonephoto/${id}`)
+export const getOnePhoto = (id, URL) => {
+  return axios.get(`${URL}/photos/getonephoto/${id}`)
     .then((res) => { const { data } = res; const { getOnePhoto } = data; return getOnePhoto })
 }
 
-export const createPhoto = (data, token) => {
-  return axios.post(`${PHOTOS_URL}/create`, data, {
+export const createPhoto = (data, token, URL) => {
+  return axios.post(`${URL}/photos/create`, data, {
     headers: {
       'Content-type': 'multipart/form-data',
       Authorization: `Bearer ${token}`
     }
   })
 }
-export const updatePhoto = (data, token, id) => {
-  return axios.put(`${PHOTOS_URL}/updatephoto/${id}`, data, {
+export const updatePhoto = (data, token, id, URL) => {
+  return axios.put(`${URL}/photos/updatephoto/${id}`, data, {
     headers: {
       'Content-type': 'multipart/form-data',
       Authorization: `Bearer ${token}`
     }
   })
 }
-export const deletePhoto = (token, id) => {
-  return axios.delete(`${PHOTOS_URL}/deletephoto/${id}`, {
+export const deletePhoto = (token, id, URL) => {
+  return axios.delete(`${URL}/deletephoto/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }

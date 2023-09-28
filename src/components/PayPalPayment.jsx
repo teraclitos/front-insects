@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { PayPalButtons } from '@paypal/react-paypal-js'
 import { useCart } from '../hooks/useCart'
+import { URLContext } from '../context/url'
 const PayPalPayment = () => {
-  const PAYPAL_URL = 'http://localhost:3001/payment'
+  const { URL } = useContext(URLContext)
+  const PAYPAL_URL = `${URL}/payment`
   const { cart } = useCart()
   const createOrder = (data) => {
-    // Order is created on the server and the order id is returned
     return fetch(`${PAYPAL_URL}/createorder`, {
       method: 'POST',
       headers: {
@@ -19,7 +20,6 @@ const PayPalPayment = () => {
       .then((order) => order.id)
   }
   const onApprove = (data) => {
-    // Order is captured on the server and the response is returned to the browser
     return fetch(`${PAYPAL_URL}/captureorder`, {
       method: 'POST',
       headers: {
@@ -32,10 +32,12 @@ const PayPalPayment = () => {
       .then((response) => response.json())
   }
   return (
-    <PayPalButtons
-      createOrder={(data, actions) => createOrder(data, actions)}
-      onApprove={(data, actions) => onApprove(data, actions)}
-    />
+    <div className='mt-5'>
+      <PayPalButtons
+        createOrder={(data, actions) => { createOrder(data, actions) }}
+        onApprove={(data, actions) => onApprove(data, actions)}
+      />
+    </div>
   )
 }
 

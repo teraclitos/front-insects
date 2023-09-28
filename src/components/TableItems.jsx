@@ -1,23 +1,26 @@
 import React from 'react'
 import { itemsArrayDeleteOneFunction } from '../services/photosCreateModify'
-
+import Button from './Buttons'
+import '../css/app.css'
 const TableItems = ({ itemsArray, setItemsArray }) => {
-  const handlesItemsArrayDeleteOne = (i) => {
+  const handlesItemsArrayDeleteOne = (i, itemsArray, setItemsArray) => {
     setItemsArray(itemsArrayDeleteOneFunction(i, itemsArray))
   }
+  const paddingButton = '0.25em 0.5em'
   return (
-    <table>
+    <table className='table-bio'>
       <thead>
         <tr>
-          <th />
-          <th colSpan={2}>size</th>
-          <th colSpan={2} />
+          <th className='invisible border-0' />
+          <th className='invisible border-0' />
+          <th colSpan={2}>Size</th>
         </tr>
         <tr>
-          <th>id</th>
-          <th>width</th>
-          <th>height</th>
-          <th>price</th>
+          <th>ID</th>
+          <th>Price</th>
+          <th>Width</th>
+          <th>Height</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -28,16 +31,16 @@ const TableItems = ({ itemsArray, setItemsArray }) => {
                     {index + 1}
                   </td>
                   <td>
+                    {field?.price}
+                  </td>
+                  <td>
                     {field?.size?.width}
                   </td>
                   <td>
                     {field?.size?.height}
                   </td>
                   <td>
-                    {field?.price}
-                  </td>
-                  <td>
-                    <button type='button' onClick={() => { handlesItemsArrayDeleteOne(index) }}>eliminar</button>
+                    <Button typeButton='button' paddingButton={paddingButton} clickFunction={() => { handlesItemsArrayDeleteOne(index, itemsArray, setItemsArray) }} type='button'>Delete</Button>
                   </td>
                 </tr>))
 }

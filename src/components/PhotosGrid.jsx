@@ -1,11 +1,9 @@
 import React from 'react'
 import Photo from './Photo'
 import '../css/app.css'
-import { useDataAllPhotos } from '../hooks/useDataAllPhotos'
-const PhotosGrid = () => {
-  const { dataAllPhotos } = useDataAllPhotos()
+const PhotosGrid = ({ dataAllPhotos }) => {
   return (
-    <section className='grid-card'>
+    <section className='grid-card mt-5'>
       {
     dataAllPhotos.map((photo) => (
       <Photo key={photo._id} photo={photo} />

@@ -1,0 +1,6 @@
+
+       
+.form-put label{display: block;margin-top: 0.5em;margin-bottom: 0.2em; padding-left: 0.1em;}
+.form-put input{width: 100%;padding-left: 0.4em; }
+.form-put textarea{height: 12rem;resize: none;padding-top: 0.3em;padding-left: 0.4em;}
+input[type=file]{padding: 0;}

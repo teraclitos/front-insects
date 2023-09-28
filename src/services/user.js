@@ -1,11 +1,10 @@
 import axios from 'axios'
-const USER_URL = 'http://localhost:3001/user'
 
-export const login = (data) => {
-  return axios.post(`${USER_URL}/loginuser`, data)
+export const login = (data, URL) => {
+  return axios.post(`${URL}/user/loginuser`, data)
 }
-export const logout = (token) => {
-  return axios.post(`${USER_URL}/logoutuser`, {}, {
+export const logout = (token, URL) => {
+  return axios.post(`${URL}/user/logoutuser`, {}, {
     headers: {
       Authorization: `Bearer ${token}`
     }

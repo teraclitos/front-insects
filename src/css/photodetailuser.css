@@ -2,14 +2,21 @@
 .photo-detail-user-container{
     display: flex;
     justify-content: space-around;
-    gap: 5em;
+    gap: 5rem;
+    position: relative ;  
 }
  .photo-detail-user-information{
     display: flex;
     flex-direction: column;
-    gap: 2em;
-
+    height: min-content;
+    gap: 0.5rem;
+    position: sticky ;
+    top: 5.5rem;
 }
+/* .images-zoomed-container{
+ 
+
+} */
 .input-sizes-container{
      display: flex;
     flex-direction: column;
@@ -20,13 +27,12 @@
 .image-zoom {
   position: relative;
   cursor: zoom-in;
-   width: 600px;
-
 }
 
 .image-zoom img {
   max-width: 100%;
   height: auto;
+ 
  
 } 
 .zoom-preview {
@@ -51,14 +57,3 @@
   width: 100px;
   margin-bottom: 10px;}
 
-.form-put{
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  justify-content: center;
-  align-items: start;
-  border: solid #000 1px;
-  margin: 10px 0;
-  padding: 2em;
-
-}

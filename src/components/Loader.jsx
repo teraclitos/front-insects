@@ -1,8 +1,10 @@
 import React from 'react'
+import Spinner from './Spinner'
+import '../css/app.css'
 
 const Loader = () => {
   return (
-    <div>Loader</div>
+    <div className='loader-container'><Spinner /></div>
   )
 }
 

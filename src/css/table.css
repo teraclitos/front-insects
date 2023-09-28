@@ -1,0 +1,13 @@
+
+.table-bio td {
+  border: 1px solid #ddd ; 
+  padding: 8px;
+  text-align: center ;
+}
+
+.table-bio th {
+  background-color: #9e1818;
+    border: 1px solid #ddd ; 
+  padding: 8px;
+  text-align: center ;
+}

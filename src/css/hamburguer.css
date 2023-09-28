@@ -1,0 +1,10 @@
+.hamburguer-image{ 
+    width: 30px;
+}
+.hamburguer-button{
+        background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      outline: none;
+}

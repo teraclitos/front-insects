@@ -1,0 +1,18 @@
+.opacity-component{
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+     z-index: 5000;
+     animation: opacity 0.25s ;
+     opacity: 75%;
+}
+
+@keyframes opacity {
+
+    from{opacity: 0%;}
+    to{opacity: 75%;}
+    
+}

@@ -3,49 +3,64 @@
 
 @import url('./header.css');
 @import url('./icons.css');
-@import url('./reset.css');
-@import url('./spiner.css');
 @import url('./card.css');
 @import url('./gridcard.css');
 @import url('./mediaqueries.css');
 @import url('./footer.css');
 @import url('./cart.css');
 @import url('./photodetailuser.css');
+@import url('./spinner.css');
+@import url('./loader');
+@import url('./pagination.css');
+@import url('./button.css');
+@import url('./form.css');
+@import url('./table.css');
+@import url('./opacity.css');
+@import url('./hamburguer.css');
+@import url('./closebutton.css');
+@import url('./modalphoto.css');
 
 
 
 
 .app-container{
-  background-color: #4f624e;
-  min-height: 100vh;
+  /* background-color: #4f624e ; */
+   background-color: #000000 ;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  min-height: 100vh;
+  justify-content: center;
+  position: relative;
+  /* overflow: hidden; */
+}
+.app-container ul{list-style: none;}
+.app-container a{text-decoration: none;}
+.main-page-container{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
   color: #fff;
 
- 
-}
-.main-page-container{
-  margin-top: 2em;
 }
 
-table {
-  border-collapse: collapse; 
-  border: 2px solid #000; 
-}
 
-th, td {
-  border: 1px solid #ddd; 
-  padding: 8px;
-  text-align: center;
-}
-
-th {
-  background-color: #f2f2f2;
-}
 .error{
   color:red
 
 }
 
+.about-me,.home,.photo-detail,.form-create,.login,.error404{
+  opacity: 1;
+  animation: transition-pages 0.7s ;
+}
+
+@keyframes transition-pages {
+  from{
+    opacity: 0;
+  }
+
+  to{opacity: 1;}
+  
+}

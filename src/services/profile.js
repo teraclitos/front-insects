@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-const PROFILE_URL = 'http://localhost:3001/personal/'
-
-export const updateProfile = (data, token, id) => {
-  return axios.put(`${PROFILE_URL}/updatepersonalinformation/${id}`, data, {
+export const updateProfile = (data, token, id, URL) => {
+  return axios.put(`${URL}/personal/updatepersonalinformation/${id}`, data, {
     headers: {
       'Content-type': 'multipart/form-data',
       Authorization: `Bearer ${token}`
@@ -11,6 +9,6 @@ export const updateProfile = (data, token, id) => {
   })
 }
 
-export const getProfile = () => {
-  return axios.get(`${PROFILE_URL}/getpersonalinformation`).then((res) => { const { data } = res; const { allInformation } = data; return allInformation[0] })
+export const getProfile = (URL) => {
+  return axios.get(`${URL}/personal/getpersonalinformation`).then((res) => { const { data } = res; const { allInformation } = data; return allInformation[0] })
 }
